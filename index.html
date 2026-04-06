@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Finance Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="profile">
+    <div class="avatar">👤</div>
+    <h3>Welcome!</h3>
+    <p class="username" onclick="toggleProfile()">NARA DIVYABHARATHI</p>
+  </div>
+
+ <ul>
+  <li class="active" onclick="showPage('dashboard')">🏠 Dashboard</li>
+  <li onclick="showPage('transactions')">💸 Transactions</li>
+  <li onclick="showPage('analytics')">📊 Analytics</li>
+  <li onclick="showPage('reports')">📈 Reports</li>
+  <li onclick="showPage('goals')">🎯 Savings Goals</li>
+</ul>
+  <button class="export-btn" onclick="exportData()">Export Data</button>
+</aside>
+<!-- PROFILE MODAL -->
+<div id="profileModal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="toggleProfile()">×</span>
+
+    <h2>User Profile</h2>
+
+    <div class="profile-details">
+      <p><strong>Name:</strong> NARA DIVYABHARATHI</p>
+      <p><strong>Account No:</strong> 1234 5678 9012</p>
+      <p><strong>Bank:</strong> State Bank of India</p>
+      <p><strong>IFSC:</strong> SBIN0001234</p>
+    </div>
+
+    <h3>Cards</h3>
+
+    <div class="cards-display">
+
+      <div class="card-design debit">
+        <p>Debit Card</p>
+        <h4>**** **** **** 4321</h4>
+        <span>RuPay</span>
+      </div>
+
+      <div class="card-design credit">
+        <p>Credit Card</p>
+        <h4>**** **** **** 9876</h4>
+        <span>Visa</span>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Main -->
+<main class="main">
+
+<!-- DASHBOARD -->
+<div id="dashboardPage">
+<header>
+<h1>Income and Expense Tracker</h1>
+<p>This Month: March</p>
+<button id="themeToggle">🌙 Dark Mode</button>
+</header>
+
+<div class="cards">
+<div class="card"><p>Total Balance</p><h2 class="amount"></h2></div>
+<div class="card"><p>Income</p><h2 class="amount"></h2></div>
+<div class="card"><p>Expenses</p><h2 class="amount"></h2></div>
+<div class="card"><p>Savings Rate</p><h2 id="savingsRate"></h2></div>
+</div>
+
+<div class="charts">
+<div class="chart-box"><canvas id="pieChart"></canvas></div>
+<div class="chart-box"><canvas id="barChart"></canvas></div>
+</div>
+</div>
+
+<!-- TRANSACTIONS -->
+<div id="transactionsPage" style="display:none">
+<h2>Transactions</h2>
+
+<div class="form">
+<input id="desc" placeholder="Description">
+<input id="amount" type="number" placeholder="Amount">
+<select id="type">
+<option value="income">Income</option>
+<option value="expense">Expense</option>
+</select>
+<button onclick="addTransaction()">Add</button>
+</div>
+
+<ul id="transactionList"></ul>
+</div>
+
+<!-- ANALYTICS -->
+<div id="analyticsPage" style="display:none">
+<h2>Analytics</h2>
+
+<div class="charts">
+<div class="chart-box"><canvas id="lineChart"></canvas></div>
+<div class="chart-box"><canvas id="analyticsPie"></canvas></div>
+</div>
+</div>
+<!-- REPORTS PAGE -->
+<div id="reportsPage" style="display:none">
+  <h2>Reports</h2>
+
+  <div class="charts">
+    <div class="chart-box">
+      <h3>Expense Distribution</h3>
+      <canvas id="reportsPie"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Income vs Expense Trend</h3>
+      <canvas id="reportsBar"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- SAVINGS GOALS PAGE -->
+<div id="goalsPage" style="display:none">
+  <h2>Savings Goals</h2>
+
+  <div class="goal-box">
+    <p>🎯 Laptop Goal (₹50,000)</p>
+    <div class="progress">
+      <div id="goalProgress"></div>
+    </div>
+    <p id="goalText"></p>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
